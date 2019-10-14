@@ -1,0 +1,23 @@
+#Using a function rand5() that returns an integer from 1 to 5 (inclusive) with uniform probability, implement a function rand7() that returns an integer from 1 to 7 (inclusive).
+
+#Implement a decent rand5(), randrange is exclusive for upper value so 1,6 = 1 to 5
+import random
+def rand5():
+    r5 = random.randrange(1,6)
+    return r5
+
+#print(rand5())
+
+def rand7():
+    #We could go "times 7 divided by 5" but some values would never be available, especially in python 3.x since it rounds down all the time (floor)
+    preResult = (rand5() * 7)
+    #let's take the longest but more accurate option of getting 1 or 2 as a result from the rand5() function
+    res = 0
+    while res != 1 and res != 2:
+        res = rand5()
+    if res == 1:
+        return preResult // 5
+    else:
+        return -(-preResult // 5)
+
+print(rand7())
