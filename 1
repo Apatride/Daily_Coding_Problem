@@ -1,0 +1,15 @@
+def solution(numbersList, k):
+    print(numbersList, k)
+    for x in numbersList:
+        missingNumber = k - x
+        if missingNumber in numbersList:
+            return True
+    return False
+
+
+
+
+numbersList = [10, 15, 3, 7]
+k = 18
+
+print(solution(numbersList, k))
