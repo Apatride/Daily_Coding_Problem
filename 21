@@ -1,0 +1,17 @@
+def solution(A):
+    sortedA = sorted(A)
+    classesList = []
+    for startTime, endTime in sortedA:
+        if len(classesList) == 0:
+            classesList.append(endTime)
+        else:
+            for x in range(len(classesList)):
+                if classesList[x] <= startTime:
+                    classesList[x] = endTime
+                    break
+            else:
+                classesList.append(endTime)
+    return len(classesList)
+
+A = [(30, 75), (0, 50), (60, 150), (80,100), (90,120)]
+print(solution(A))
