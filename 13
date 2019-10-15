@@ -1,0 +1,28 @@
+#Get a string S and an int K. Find the longest substring with K distinct chars.
+#For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb"
+
+def solution(S, K):
+    ressub = ""
+    for p in range(len(S)):
+        storesub = ""
+        countarr = []
+        for p2 in range(p,len(S)):
+            #print("p: ", S[p], " p2 ", S[p2])
+            #print("storesub: ", storesub, " ressub: ", ressub)
+            if S[p2] not in countarr:
+                countarr.append(S[p2])
+                if len(countarr) <= K:
+                    storesub += S[p2]
+                elif len(ressub) < len(storesub):
+                    ressub = storesub
+                    break
+                else:
+                    break
+            else:
+                storesub += S[p2]
+    if len(ressub) < len(storesub):
+        ressub = storesub
+    return ressub
+
+
+print(solution("zoqaxkvhwpynouirzoajycblikcufibasfxvejcoqsugihidzkoprvbxlyicugiciqxrobhhrqdfanqnapcotpnvndgsnmnfnlcx",4))
