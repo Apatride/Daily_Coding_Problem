@@ -1,0 +1,29 @@
+# Given a array of numbers representing the stock prices of a company in chronological order, write a function that\
+# calculates the maximum profit you could have made from buying and selling that stock once.\
+# You must buy before you can sell it.
+
+# For example, given [9, 11, 8, 5, 7, 10], you should return 5, since you could\
+# buy the stock at 5 dollars and sell it at 10 dollars.
+
+def solution(stock_price):
+    current_min = stock_price[0]
+    current_max = stock_price[0]
+    max_profit = 0
+    for value in stock_price:
+        if value > current_max:
+            current_max = value
+        if value < current_min:
+            if current_max - current_min > max_profit:
+                max_profit = current_max - current_min
+            else:
+                pass
+            current_min = value
+            current_max = value
+    if current_max - current_min > max_profit:
+        max_profit = current_max - current_min
+    else:
+        pass
+    return max_profit
+
+
+print(solution([10, 11, 8, 5, 7, 10]))
